@@ -111,10 +111,18 @@ var array = [1,2,3,4,5];
 })(array);
 
 // Helper function to check if a str is palindrome
-// By reversing the string and check if it matches orginal string
-// ignore case
+// Check if the 2 pointers l and r mathc, if not return false
 var isPalindrome = function(str) {
-    return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
+    let l = 0;
+    let r = str.length - 1;
+    while (l < r) {
+        if(str[l]!=str[r]) {
+            return false
+        }
+        l++;
+        r--;
+    }
+    return true;
 }
 // Anonymous function Return all the palindromes in an array
 var getPalindrome = function(arr) {
@@ -373,12 +381,21 @@ console.log(getPrimeNumbers(array))
 // arrow function
 // Return all the palindromes in an array
 // Helper function to check if a str is palindrome
-// By reversing the string and check if it matches orginal string
-// ignore case
-var isPalindrome = (str)=> {
-    return str.toLowerCase() === str.toLowerCase().split('').reverse().join('');
+// Check if the 2 pointers l and r mathc, if not return false
+var isPalindrome = function(str) {
+    let l = 0;
+    let r = str.length - 1;
+    while (l < r) {
+        if(str[l]!=str[r]) {
+            return false
+        }
+        l++;
+        r--;
+    }
+    return true;
 }
-// Anonymous function Return all the palindromes in an array
+
+// Return all the palindromes in an array
 var getPalindrome = (arr) =>{
     return arr.filter(item => {
         if (typeof item === 'string') {
