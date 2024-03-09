@@ -197,7 +197,6 @@ var median = function(A,B) {
         }
     }
 };
-
 var arr1=[1,2,3];
 var arr2=[3,4,5];
 console.log(median(arr1,arr2));
@@ -212,8 +211,9 @@ var arr2=[3,4,5];
     let l=0;
     let r=A.length-1;
     let arrLen = half;
+    var result = 0;
     while(true) {
-        i = Math.floor((i+j)/2); // point to idx of mid A
+        i = Math.floor((l+r)/2); // point to idx of mid A
         j = half-i-2; // point to idx of mid B
 
         Aleft = i>=0 ?  A[i]:Infinity;
@@ -225,11 +225,13 @@ var arr2=[3,4,5];
         if(Aleft<=Bright && Bleft <= Aright) {
             // Even num
             if (total%2==0) {
-                console.log((Math.max(Aleft,Bleft) + Math.min(Aright,Bright)) / 2);
+                result = (Math.max(Aleft,Bleft) + Math.min(Aright,Bright)) / 2;
+                break;
             }
             // Odd num
             else {
-                console.log(Math.min(Aright,Bright));
+               result = Math.min(Aright,Bright);
+               break;
             }
         }
         // Check if left mid value of A > B mid+1
@@ -243,6 +245,7 @@ var arr2=[3,4,5];
             l = i+1;
         }
     }
+    console.log(result);
 })(arr1,arr2);
 
 // Remove duplicates from an array anonymous
@@ -329,7 +332,14 @@ var k = 2;
 // Do the below programs in arrow functions.
 // Print odd numbers in an array
 var arr = [1,2,3,4,5];
-arr.map(ele =>{if (ele%2!=0) console.log(ele);});
+var oddNums = (arr) =>{
+    arr.forEach(function(num) { 
+        if (num%2!==0) { 
+            console.log(num); 
+        } 
+    }); 
+};
+oddNums(arr);
 
 // arrow function
 // Convert all the strings to title caps in a string array
